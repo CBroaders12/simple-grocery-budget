@@ -1,0 +1,66 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.main-list-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	right: 0;
+	width: 70%;
+	height: 100vh;
+	background-color: grey;
+}
+
+#grocery-entry-form {
+	margin: 1rem 0;
+}
+
+.total-cost-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	left: 0;
+	width: 30%;
+	height: 100%;
+	background-color: bisque;
+}
+
+#available-budget-form {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 2rem;
+	font-size: 1.25rem;
+}
+
+#available-budget-form label {
+	margin: auto;
+}
+
+#available-budget-form #currency-sign {
+	margin-right: 0.5rem;
+}
+
+#available-budget-form input {
+	margin-top: 0.25rem;
+	padding: 0.5rem;
+	font-size: inherit;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 3px 3px 10px rgba(80, 80, 80, 0.5);
+}
+
+.budget-display {
+	background-color: grey;
+	padding: 2rem;
+	max-width: 100%;
+	border-radius: 5px;
+	box-shadow: 5px 5px 10px rgba(80, 80, 80, 0.5);
+	font-size: 2rem;
+}
