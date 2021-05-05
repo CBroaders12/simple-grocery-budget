@@ -1,23 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;1,400&display=swap');
+
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 }
 
+html {
+	font-family: Nunito, Arial, sans-serif;
+}
+
 .main-list-container {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 	position: absolute;
 	right: 0;
 	width: 70%;
 	height: 100vh;
-	background-color: grey;
+	/* overflow: scroll; */
+	background-color: #5264ae;
+}
+
+fieldset {
+	text-align: left;
+
+	margin-right: 0.5rem;
+}
+
+#item-fieldset {
+	grid-area: item;
+	border: none;
+}
+
+#price-fieldset {
+	grid-area: price;
+	border: none;
+}
+
+#add-btn {
+	grid-area: add;
+	align-self: end;
+	height: 2.5rem;
 }
 
 #grocery-entry-form {
+	display: -ms-grid;
+	display: grid;
+	grid-template-columns: 50% 35% auto;
+	-ms-grid-columns: 50% auto 45%;
+	grid-template-rows: auto;
+	-ms-grid-rows: auto;
+	grid-template-areas: 'item price add';
+	text-align: center;
 	margin: 1rem 0;
+}
+
+#grocery-entry-form input {
+	width: 100%;
+	border: none;
+	border-radius: 5px;
+	padding: 0.5rem;
 }
 
 .total-cost-container {
@@ -29,7 +72,8 @@
 	left: 0;
 	width: 30%;
 	height: 100%;
-	background-color: bisque;
+	background-color: #1f1f1f;
+	color: white;
 }
 
 #available-budget-form {
@@ -37,6 +81,11 @@
 	flex-direction: column;
 	margin-bottom: 2rem;
 	font-size: 1.25rem;
+}
+
+#budget-label {
+	font-size: 1.75rem;
+	font-weight: 600;
 }
 
 #available-budget-form label {

@@ -9,9 +9,9 @@ const itemNameInput = document.getElementById('item');
 const itemPriceInput = document.getElementById('price');
 
 let groceryListData = [];
-let totalBudget;
+let totalBudget = 0;
 
-const updateBudget = (price) => {
+const updateBudget = () => {
 	const currentTotal = groceryListData.reduce(
 		(acc, cur) => cur.price + acc,
 		0
@@ -34,7 +34,7 @@ const addGroceryItem = (name, price) => {
 	itemPriceSpan.className = 'item-price';
 
 	itemNameSpan.innerHTML = name;
-	itemPriceSpan.innerHTML = `$${price}`;
+	itemPriceSpan.innerHTML = `$${price.toFixed(2)}`;
 
 	groceryItem.appendChild(itemNameSpan);
 	groceryItem.appendChild(itemPriceSpan);
@@ -51,7 +51,8 @@ budgetForm.addEventListener('submit', (e) => {
 
 	totalBudget = Number(budgetInput.value);
 	budgetInput.value = '';
-	budgetRemaining.innerText = totalBudget.toFixed(2);
+
+	updateBudget();
 
 	budgetDisplay.style.backgroundColor = 'green';
 

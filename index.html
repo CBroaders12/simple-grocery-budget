@@ -9,28 +9,9 @@
 	</head>
 	<body>
 		<main>
-			<section class="main-list-container" id="main-list-container">
-				<h2>Grocery List</h2>
-				<form id="grocery-entry-form">
-					<label for="item">Item</label>
-					<input type="text" id="item" required />
-
-					<label for="price">Price</label>
-					<input
-						type="number"
-						min="0.01"
-						step="0.01"
-						id="price"
-						required
-					/>
-
-					<button type="submit">Add</button>
-				</form>
-				<div class="grocery-list" id="grocery-list"></div>
-			</section>
 			<section class="total-cost-container" id="total-cost-container">
 				<form id="available-budget-form">
-					<label for="budget-input">Your Budget</label>
+					<label for="budget-input" id="budget-label">Budget</label>
 					<div>
 						<span id="currency-sign">$</span
 						><input
@@ -50,6 +31,29 @@
 						0.00
 					</span>
 				</div>
+			</section>
+			<section class="main-list-container" id="main-list-container">
+				<h2>Grocery List</h2>
+				<form id="grocery-entry-form">
+					<fieldset id="item-fieldset">
+						<label for="item">Item</label><br />
+						<input type="text" id="item" required />
+					</fieldset>
+
+					<fieldset id="price-fieldset">
+						<label for="price">Price</label><br />
+						<input
+							type="number"
+							min="0.01"
+							step="0.01"
+							id="price"
+							required
+						/>
+					</fieldset>
+
+					<button type="submit" id="add-btn">Add</button>
+				</form>
+				<div class="grocery-list" id="grocery-list"></div>
 			</section>
 		</main>
 
