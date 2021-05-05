@@ -18,24 +18,23 @@ html {
 	right: 0;
 	width: 70%;
 	height: 100vh;
+	padding-top: 3rem;
 	/* overflow: scroll; */
 	background-color: #5264ae;
 }
 
 fieldset {
 	text-align: left;
-
 	margin-right: 0.5rem;
+	border: none;
 }
 
 #item-fieldset {
 	grid-area: item;
-	border: none;
 }
 
 #price-fieldset {
 	grid-area: price;
-	border: none;
 }
 
 #add-btn {
@@ -51,6 +50,7 @@ fieldset {
 	-ms-grid-columns: 50% auto 45%;
 	grid-template-rows: auto;
 	-ms-grid-rows: auto;
+	column-gap: 0.5rem;
 	grid-template-areas: 'item price add';
 	text-align: center;
 	margin: 1rem 0;
@@ -61,6 +61,56 @@ fieldset {
 	border: none;
 	border-radius: 5px;
 	padding: 0.5rem;
+}
+
+.grocery-list {
+	width: 500px;
+	height: 70%;
+	background-color: #1f1f1f;
+	overflow-y: auto;
+}
+
+.grocery-item:nth-child(even) {
+	background-color: #858585;
+}
+
+.grocery-item:nth-child(odd) {
+	background-color: #a8a8a8;
+}
+
+.grocery-item {
+	display: -ms-grid;
+	display: grid;
+	grid-template-columns: 40% 40% auto;
+	-ms-grid-columns: 40% 40% auto;
+	grid-template-rows: auto;
+	-ms-grid-rows: auto;
+	align-items: center;
+	grid-template-areas: 'item price remove';
+	height: 3rem;
+}
+
+.item-name {
+	grid-area: item;
+}
+
+.item-price {
+	grid-area: price;
+}
+
+.delete-item-btn {
+	grid-area: remove;
+	width: 60%;
+	height: 1.5rem;
+	border: 1px black solid;
+	background-color: red;
+	border-radius: 3px;
+	justify-self: center;
+}
+
+.grocery-item span {
+	display: inline-block;
+	padding-left: 0.25rem;
 }
 
 .total-cost-container {

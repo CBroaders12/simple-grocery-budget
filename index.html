@@ -11,7 +11,9 @@
 		<main>
 			<section class="total-cost-container" id="total-cost-container">
 				<form id="available-budget-form">
-					<label for="budget-input" id="budget-label">Budget</label>
+					<label for="budget-input" id="budget-label"
+						>Set Your Budget</label
+					>
 					<div>
 						<span id="currency-sign">$</span
 						><input
@@ -26,12 +28,14 @@
 					</div>
 				</form>
 
+				<h4>Available Budget</h4>
 				<div class="budget-display" id="budget-display">
 					$<span class="budget-remaining" id="budget-remaining">
 						0.00
 					</span>
 				</div>
 			</section>
+
 			<section class="main-list-container" id="main-list-container">
 				<h2>Grocery List</h2>
 				<form id="grocery-entry-form">
@@ -53,7 +57,13 @@
 
 					<button type="submit" id="add-btn">Add</button>
 				</form>
-				<div class="grocery-list" id="grocery-list"></div>
+				<div class="grocery-list" id="grocery-list">
+					<!-- <div class="grocery-item">
+						<span class="grocery-info item-name">Item Name</span>
+						<span class="grocery-info item-price">Item Price</span>
+						<button class="delete-item-btn">Remove</button>
+					</div> -->
+				</div>
 			</section>
 		</main>
 

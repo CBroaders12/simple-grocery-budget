@@ -8,12 +8,51 @@ const groceryList = document.getElementById('grocery-list');
 const itemNameInput = document.getElementById('item');
 const itemPriceInput = document.getElementById('price');
 
-let groceryListData = [];
+let groceryListData = {};
 let totalBudget = 0;
 
+const displayGroceryList = () => {
+	while (groceryList.firstChild) {
+		groceryList.firstChild.remove();
+	}
+
+	let groceryItems = Object.keys(groceryListData);
+	groceryItems.forEach((item) => {
+		const groceryItem = document.createElement('div');
+		const itemNameSpan = document.createElement('span');
+		const itemPriceSpan = document.createElement('span');
+		const removeItemBtn = document.createElement('button');
+
+		groceryItem.classList.add('grocery-item');
+		itemNameSpan.className = 'item-name';
+		itemPriceSpan.className = 'item-price';
+		removeItemBtn.classList.add('delete-item-btn');
+
+		itemNameSpan.innerHTML = item;
+		itemPriceSpan.innerHTML = `$${groceryListData[item].toFixed(2)}`;
+		removeItemBtn.innerHTML = 'Remove';
+
+		groceryItem.appendChild(itemNameSpan);
+		groceryItem.appendChild(itemPriceSpan);
+		groceryItem.appendChild(removeItemBtn);
+		groceryList.appendChild(groceryItem);
+
+		// ! Always targets the last item name
+		removeItemBtn.addEventListener('click', (e) => {
+			e.preventDefault();
+			console.log(item);
+
+			delete groceryListData[item];
+
+			updateBudget();
+			displayGroceryList();
+		});
+	});
+};
+
 const updateBudget = () => {
-	const currentTotal = groceryListData.reduce(
-		(acc, cur) => cur.price + acc,
+	const currentTotal = Object.values(groceryListData).reduce(
+		(acc, cur) => cur + acc,
 		0
 	);
 
@@ -25,23 +64,9 @@ const updateBudget = () => {
 };
 
 const addGroceryItem = (name, price) => {
-	const groceryItem = document.createElement('div');
-	const itemNameSpan = document.createElement('span');
-	const itemPriceSpan = document.createElement('span');
+	groceryListData[name] = price;
 
-	groceryItem.className = 'grocery-item';
-	itemNameSpan.className = 'item-name';
-	itemPriceSpan.className = 'item-price';
-
-	itemNameSpan.innerHTML = name;
-	itemPriceSpan.innerHTML = `$${price.toFixed(2)}`;
-
-	groceryItem.appendChild(itemNameSpan);
-	groceryItem.appendChild(itemPriceSpan);
-
-	groceryList.appendChild(groceryItem);
-
-	groceryListData.push({ name, price });
+	displayGroceryList();
 
 	updateBudget();
 };
@@ -65,6 +90,5 @@ groceryForm.addEventListener('submit', (e) => {
 	const itemName = itemNameInput.value;
 	const itemPrice = Number(itemPriceInput.value);
 
-	console.log({ itemName, itemPrice });
 	addGroceryItem(itemName, itemPrice);
 });
