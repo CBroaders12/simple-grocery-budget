@@ -63,9 +63,14 @@ fieldset {
 	padding: 0.5rem;
 }
 
-.grocery-list {
+.list-container {
 	width: 500px;
 	height: 70%;
+}
+
+.grocery-list {
+	width: 100%;
+	height: calc(100% - 2rem);
 	background-color: #1f1f1f;
 	overflow-y: auto;
 }
@@ -111,6 +116,12 @@ fieldset {
 .grocery-item span {
 	display: inline-block;
 	padding-left: 0.25rem;
+}
+
+.list-total {
+	width: 100%;
+	background-color: aliceblue;
+	height: 2rem;
 }
 
 .total-cost-container {

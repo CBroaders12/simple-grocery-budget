@@ -7,6 +7,7 @@ const groceryForm = document.getElementById('grocery-entry-form');
 const groceryList = document.getElementById('grocery-list');
 const itemNameInput = document.getElementById('item');
 const itemPriceInput = document.getElementById('price');
+const totalPriceSpan = document.getElementById('total-price');
 
 let groceryListData = {};
 let totalBudget = 0;
@@ -37,26 +38,27 @@ const displayGroceryList = () => {
 		groceryItem.appendChild(removeItemBtn);
 		groceryList.appendChild(groceryItem);
 
-		// ! Always targets the last item name
 		removeItemBtn.addEventListener('click', (e) => {
 			e.preventDefault();
 			console.log(item);
 
 			delete groceryListData[item];
 
-			updateBudget();
+			updateTotal();
 			displayGroceryList();
 		});
 	});
 };
 
-const updateBudget = () => {
+const updateTotal = () => {
 	const currentTotal = Object.values(groceryListData).reduce(
 		(acc, cur) => cur + acc,
 		0
 	);
 
 	let currentBudget = totalBudget - currentTotal;
+
+	totalPriceSpan.innerHTML = `$ ${currentTotal.toFixed(2)}`;
 
 	budgetRemaining.innerHTML = currentBudget.toFixed(2);
 
@@ -68,16 +70,15 @@ const addGroceryItem = (name, price) => {
 
 	displayGroceryList();
 
-	updateBudget();
+	updateTotal();
 };
 
 budgetForm.addEventListener('submit', (e) => {
 	e.preventDefault();
 
 	totalBudget = Number(budgetInput.value);
-	budgetInput.value = '';
 
-	updateBudget();
+	updateTotal();
 
 	budgetDisplay.style.backgroundColor = 'green';
 
@@ -91,4 +92,9 @@ groceryForm.addEventListener('submit', (e) => {
 	const itemPrice = Number(itemPriceInput.value);
 
 	addGroceryItem(itemName, itemPrice);
+
+	itemNameInput.value = '';
+	itemPriceInput.value = '';
+
+	itemNameInput.focus();
 });
